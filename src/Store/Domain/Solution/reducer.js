@@ -8,7 +8,7 @@ let lastId = 0;
 // to the empty array
 
 function reducer(state = [], action) {
-  if (action.type == ActionTypes.BUG_ADDED) {
+  if (action.type == ActionTypes.SOLUTION_ADDED) {
     return [
       ...state,
       {
@@ -17,16 +17,15 @@ function reducer(state = [], action) {
         resolved: false,
       },
     ];
-  } else if (action.type == ActionTypes.BUG_REMOVED) {
+  } else if (action.type == ActionTypes.SOLUTION_REMOVED) {
     return state.filter((bug) => bug.id != action.payload.id);
-  } else if (action.type == ActionTypes.BUG_RESOLVED) {
+  } else if (action.type == ActionTypes.SOLUTION_RESOLVED) {
     return state.map((e) => {
       if (e.id == action.payload.id) {
-        return{
-            ...e,
-            resolved:true
-        
-        }
+        return {
+          ...e,
+          resolved: true,
+        };
       }
 
       return e;

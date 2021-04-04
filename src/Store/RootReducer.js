@@ -1,13 +1,7 @@
-import { combineReducers } from 'redux';
-import bugReducer from "./Bug/reducer";
-import solutionReducer from "./Solution/reducer";
-import numberReducer from "./Number/reducer";
-
+import { combineReducers } from "redux";
+import DomainReducer from "./Domain/DomainReducer";
 
 export default combineReducers({
-    bug: bugReducer,
-    solution:solutionReducer,
-    number:numberReducer
-  });
-
-
+  domainReducer: DomainReducer,
+  
+});
