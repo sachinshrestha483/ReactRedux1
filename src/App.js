@@ -1,38 +1,51 @@
 import "./App.css";
- import store from "./Store/ConfigureStore";
- import * as BugsActionCreator from "./Store/Domain/Bug/reducer";
- import * as SolutionActionCreator from "./Store/Domain/Solution/ActionCreater";
- import * as NumberActionCreator from "./Store/Domain/Number/ActionCreater";
- 
- 
- console.log(store);
- console.log(store);
+import store from "./Store/ConfigureStore";
+import {Provider } from "react-redux"
 
- store.subscribe(() => {
-   console.log("Store Changed");
-   console.log(store.getState());
- });
+import {
+  bugAdded,
+  bugRemoved,
+  bugResolved,
+  getUnresolvedBugs,
+} from "./Store/Domain/Bug/reducer";
+import * as SolutionActionCreator from "./Store/Domain/Solution/ActionCreater";
+import * as NumberActionCreator from "./Store/Domain/Number/ActionCreater";
+import Bugs from "./components/bugs";
+import StoreContext from "./contexts/storeContext";
+import BugsList from "./components/bugsList";
 
- console.log(store.getState());
- console.log(store.getState());
+console.log(store);
+console.log(store);
 
- store.dispatch(BugsActionCreator.bugAdded({description:"description"}));
+store.subscribe(() => {
+  console.log("Store Changed");
+  console.log(store.getState());
+});
 
- store.dispatch(BugsActionCreator.bugRemoved({id:1}));
+console.log(store.getState());
+console.log(store.getState());
 
- store.dispatch(NumberActionCreator.addNumer());
- store.dispatch(NumberActionCreator.addNumer());
- store.dispatch(NumberActionCreator.addNumer());
- store.dispatch(NumberActionCreator.addNumer());
- store.dispatch(NumberActionCreator.decreaseNumber());
+store.dispatch(bugAdded({ description: "description" }));
 
- store.getState();
+store.dispatch(bugAdded({ description: "description" }));
+store.dispatch(bugAdded({ description: "description" }));
+
+store.dispatch(bugAdded({ description: "description" }));
+store.dispatch(bugAdded({ description: "description" }));
+
+store.dispatch(bugAdded({ description: "description" }));
+store.dispatch(bugAdded({ description: "description" }));
+
+store.dispatch(bugAdded({ description: "description" }));
 
 function App() {
   return (
-    <div className="App">
-      <h1>Redux is Here </h1>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <h1>Redux is Here </h1>
+        <BugsList />
+      </div>
+    </Provider>
   );
 }
 
